@@ -1,0 +1,523 @@
+/*---------- CSS Variables and Base Styles ----------------*/
+:root {
+  --color-body: #ffd700; /* Dark background color */
+  --color-heading: #6b0606; /* Bright Red color for headings */
+  --color-base: #c0b283; /* Muted Gold for primary text and accents */
+  --color-base2: #ffd700; /* Bright Red for secondary accents */
+  --color-base3: #a9a9a9; /* Warm Gray for additional elements */
+  --color-primary-red: #d31212; /* Bright Red */
+  --color-primary-gold: #ffd700; /* Bright Gold */
+  --sidbar-width: 240px;
+  --font-base: "Bai Jamjuree";
+}
+
+body {
+  background: url(/assests/images/DarkRedBG.jpg);
+  background-position: center;
+  background-repeat: repeat;
+  color: var(--color-body);
+  font-family: var(--font-base), sans-serif;
+}
+
+/* Text Colors */
+h4,
+h5 {
+  color: var(--color-base3);
+}
+h1,
+h2,
+h3,
+h6 {
+  color: var(--color-base);
+  font-weight: 700;
+}
+.lead,
+p {
+  color: var(--color-base);
+}
+
+/*--Links-- */
+a {
+  text-decoration: none;
+  color: var(--color-body);
+  transition: all 0.4s ease;
+}
+a:hover {
+  color: var(--color-base3);
+}
+
+/*--Images-- */
+img {
+  width: 100%;
+}
+
+/* General Layout */
+.full-height {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 80px;
+  padding-bottom: 60px;
+  border-bottom: 2px solid rgba(172, 17, 17, 0.1);
+}
+
+/* Text Branding */
+.text-brand {
+  color: var(--color-base3);
+}
+
+/* Background Colors */
+.bg-base {
+  background: var(--color-heading);
+}
+
+/*----------------------  Shadow and Animation Effects ---------------------- */
+.shadow-effect {
+  transition: all 0.5s;
+}
+.shadow-effect:hover {
+  box-shadow: -6px 6px 0 8px var(--color-base3);
+}
+
+/* Icon Box */
+.iconbox {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px;
+  color: var(--color-base);
+}
+
+/*----------------------  Navbar ---------------------- */
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-heading);
+  z-index: 1000;
+  padding: 15px 30px;
+  box-shadow: 0 2px 5px rgb(185, 173, 5);
+}
+
+.navbar img {
+  animation: animate 5s ease-in-out infinite;
+}
+
+.navbar .nav-link {
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #ffd700;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 4.4px;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  margin: 0 15px;
+  font-size: 1.1rem;
+  display: inline-block;
+}
+
+.navbar .nav-link:hover {
+  color: var(--color-base2);
+  transform: scale(1.05);
+}
+
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background-color: var(--color-base2);
+  bottom: -5px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.navbar .nav-link:hover::after {
+  width: 100%;
+}
+
+.navbar .nav-link.active {
+  color: var(--color-base2);
+}
+
+/* Adjustments for Larger Screens */
+@media (min-width: 992px) {
+  .navbar {
+    height: 80px;
+  }
+}
+
+/* Additional Styles for Hover Animation */
+.navbar .nav-link:hover {
+  color: #f8050587;
+  transform: scale(1.1);
+}
+
+/* Active link underline */
+.navbar .nav-link.active {
+  color: var(--color-base2); /* Existing color for the active link */
+}
+
+.navbar .nav-link.active::after {
+  width: 100%; /* Extend the underline across the entire link */
+}
+
+/*---------------------- Flip Card Effect ---------------------- */
+.flip-container {
+  perspective: 1000px;
+}
+
+.flip-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.flip-card:hover {
+  transform: rotateY(180deg);
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.flip-card-front {
+  background-color: white;
+  z-index: 2;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  background-color: #f8f9fa;
+}
+
+.flip-card-front img,
+.flip-card-back img {
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Adjustable positioning classes */
+.position-top {
+  top: 10%;
+}
+.position-bottom {
+  bottom: 10%;
+}
+.position-center {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.position-left {
+  left: 10%;
+}
+.position-right {
+  right: 10%;
+}
+
+/*----------------------- Social Icons and Buttons ------------------------- */
+/* Social Icons */
+.social-icons {
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.social-icons .social-icon i {
+  font-size: 2rem;
+  padding: 10px;
+}
+
+/* Contact Button */
+.contact-btn {
+  font-size: 1.2rem;
+  padding: 15px 35px;
+  margin-top: 20px;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(244, 2, 2, 0.1);
+  position: relative;
+  background-color: var(--color-base);
+  color: #0b0c10;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.contact-btn:hover {
+  background-color: var(--color-base2);
+  transform: scale(1.05);
+}
+
+/* Larger Button */
+.btn-large {
+  font-size: 1.5rem;
+  padding: 15px 30px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(248, 247, 247, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Gold Button Style */
+.btn-brand {
+  background-color: #ffd700;
+  color: #000;
+  border: none;
+}
+
+.btn-brand:hover {
+  background-color: #ffc107;
+  transform: scale(1.05);
+}
+
+/* Portfolio Items */
+.portfolio-content {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-info h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.portfolio-info p {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+/* Overlay Effect */
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 123, 255, 0.85);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.portfolio-content:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-overlay p {
+  font-size: 9.25rem;
+  font-weight: bold;
+  color: #d31212;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* Image Styling */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Lightbox styles */
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lightbox-content {
+  position: relative;
+}
+
+#lightbox-img {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 10px;
+}
+
+#close-btn {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background-color: #fff;
+  color: #333;
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Keyframes for wave animation */
+@keyframes wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Style for the social icons container */
+.social-icons {
+  display: flex;
+  justify-content: center; /* Centers the icons horizontally */
+  align-items: center; /* Aligns icons vertically */
+  animation: wave 0.9s ease-in-out infinite; /* Apply wave animation */
+}
+
+/* Style for individual social icons */
+.btn-social {
+  font-size: 4.5rem; /* Adjust size as needed */
+  margin: 0 15px; /* Space between icons */
+  color: var(--color-base);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for social icons */
+.btn-social:hover {
+  color: var(--color-base2);
+  transform: scale(1.3); /* Slightly increase size on hover */
+}
+
+/* Responsive adjustments */
+@media (max-height: 600px) {
+  .btn-social {
+    font-size: 1.5rem; /* Smaller size for shorter screens */
+  }
+}
+
+@media (min-height: 1200px) {
+  .btn-social {
+    font-size: 2.5rem; /* Larger size for taller screens */
+  }
+}
+
+/* Keyframes for the breathing effect */
+@keyframes breathing {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* Base style for the filter buttons */
+.filter-button {
+  font-size: 1.5rem; /* Increase font size for larger buttons */
+  padding: 15px 30px; /* Increased padding for a bigger button */
+  border-radius: 8px; /* Rounded corners */
+  border: none; /* Remove default border */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Color Themes */
+.filter-button.gold {
+  background-color: #d4b8b1; /* Gold color */
+  color: #000; /* Black text for contrast */
+}
+
+.filter-button.red {
+  background-color: #ffd700; /* Red color */
+  color: #000; /* White text for contrast */
+}
+
+.filter-button.warm-grey {
+  background-color: #ffd700; /* Warm grey color */
+  color: #000; /* Black text for contrast */
+}
+
+/* Hover Effects */
+.filter-button:hover {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow for depth */
+}
+
+.active .filter-button {
+  outline: 3px solid #333; /* Outline for active button */
+}
+
+/* Style for Social Icons */
+.btn-social {
+  color: #ffd700; /* Gold color for the icon */
+  font-size: 4rem; /* Adjust icon size as needed */
+  margin: 0 10px; /* Spacing between icons */
+  transition: color 0.1s, transform 0.1s; /* Smooth transition for hover effects */
+}
+
+/* Hover Effect */
+.btn-social:hover {
+  color: #ffa500; /* Darker gold color on hover */
+  transform: scale(1.2); /* Slight zoom effect on hover */
+}
+
+/* Optional: Centering the Social Icons Container */
+.social-icons {
+  text-align: center;
+}
+
+/*---------------------- END Social Icons and Buttons ---------------------- */
+
+
+.main {
+  margin-bottom: -110px; /* Reduced margin below the main content */
+}
